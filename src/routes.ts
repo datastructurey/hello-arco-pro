@@ -156,11 +156,161 @@ export const routes: IRoute[] = [
     children: [
       {
         name: '备货申请管理',
-        key: 'stock/info',
+        key: 'stock/proposal',
       },
       {
-        name: 'menu.user.setting',
-        key: 'stock/setting',
+        name: '备货申请确认',
+        key: 'stock/sure',
+      },
+      {
+        name: '备货复核确认',
+        key: 'stock/review',
+      },
+      {
+        name: '辅助数据中心',
+        key: 'stock/supportingData',
+      },
+      {
+        name: '分区逻辑设置',
+        key: 'stock/zone',
+      },
+      {
+        name: 'SKU负责人管理',
+        key: 'stock/personInCharge',
+      },
+      {
+        name: '备货数据调整',
+        key: 'stock/adjustment',
+      },
+    ],
+  },
+  {
+    name: '排柜管理',
+    key: 'cabinet',
+    children: [
+      {
+        name: '备货分配工厂',
+        key: 'cabinet/stockingAllocation',
+      },
+      {
+        name: '分配工厂审批',
+        key: 'cabinet/distributionFactory',
+      },
+      {
+        name: '填写交互时间',
+        key: 'cabinet/deliveryTime',
+      },
+      {
+        name: '系统自动排柜',
+        key: 'cabinet/autoCabinet',
+      },
+      {
+        name: '交付单汇总页',
+        key: 'cabinet/deliverySummary',
+      },
+      {
+        name: '排柜信息补全',
+        key: 'cabinet/infoCompletion',
+      },
+      {
+        name: '特殊交付管理',
+        key: 'cabinet/specialDelivery',
+      },
+    ],
+  },
+  {
+    name: '库存管理',
+    key: 'inventory',
+    children: [
+      {
+        name: '头程上架管理',
+        key: 'inventory/warehouse',
+      },
+      {
+        name: '库存明细查询',
+        key: 'inventory/detail',
+      },
+      {
+        name: '库存消耗日志',
+        key: 'inventory/consumption',
+      },
+      {
+        name: '库存去化率表',
+        key: 'inventory/turnoverRate',
+      },
+      {
+        name: '库存划分工具',
+        key: 'inventory/inventoryAllocation',
+      },
+    ],
+  },
+  {
+    name: '物流尾程管理',
+    key: 'logistics',
+    children: [
+      {
+        name: 'LTL物流管理',
+        key: 'logistics/lastLeg',
+      },
+      {
+        name: '地区信息管理',
+        key: 'logistics/area',
+      },
+    ],
+  },
+  {
+    name: '产品管理',
+    key: 'product',
+    children: [
+      {
+        name: '分类管理',
+        key: 'product/sortManagement',
+      },
+      {
+        name: '平台商品抓取',
+        key: 'product/ProductCapture',
+      },
+      {
+        name: '品牌管理',
+        key: 'product/brand',
+      },
+      {
+        name: '图片管理',
+        key: 'product/picture',
+      },
+      {
+        name: '辅料管理',
+        key: 'product/accessories',
+      },
+      {
+        name: '产品管理',
+        key: 'product/manage',
+      },
+    ],
+  },
+  {
+    name: '系统管理',
+    key: 'system',
+    children: [
+      {
+        name: '用户管理',
+        key: 'system/user',
+      },
+      {
+        name: '角色管理',
+        key: 'system/role',
+      },
+      {
+        name: '菜单管理',
+        key: 'system/menu',
+      },
+      {
+        name: '部门管理',
+        key: 'system/dept',
+      },
+      {
+        name: '岗位管理',
+        key: 'system/post',
       },
     ],
   },

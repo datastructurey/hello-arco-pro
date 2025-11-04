@@ -2,18 +2,7 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { Layout, Menu, Breadcrumb, Spin } from '@arco-design/web-react';
 import cs from 'classnames';
-import {
-  IconDashboard,
-  IconList,
-  IconSettings,
-  IconFile,
-  IconApps,
-  IconCheckCircle,
-  IconExclamationCircle,
-  IconUser,
-  IconMenuFold,
-  IconMenuUnfold,
-} from '@arco-design/web-react/icon';
+import { IconMenuFold, IconMenuUnfold } from '@arco-design/web-react/icon';
 import { useSelector } from 'react-redux';
 import qs from 'query-string';
 import NProgress from 'nprogress';
@@ -26,6 +15,7 @@ import getUrlParams from './utils/getUrlParams';
 import lazyload from './utils/lazyload';
 import { GlobalState } from './store';
 import styles from './style/layout.module.less';
+import OwnIcon from '@/components/Icon';
 
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
@@ -33,32 +23,10 @@ const SubMenu = Menu.SubMenu;
 const Sider = Layout.Sider;
 const Content = Layout.Content;
 
-function getIconFromKey(key) {
-  switch (key) {
-    case 'dashboard':
-      return <IconDashboard className={styles.icon} />;
-    case 'list':
-      return <IconList className={styles.icon} />;
-    case 'form':
-      return <IconSettings className={styles.icon} />;
-    case 'profile':
-      return <IconFile className={styles.icon} />;
-    case 'visualization':
-      return <IconApps className={styles.icon} />;
-    case 'result':
-      return <IconCheckCircle className={styles.icon} />;
-    case 'exception':
-      return <IconExclamationCircle className={styles.icon} />;
-    case 'user':
-      return <IconUser className={styles.icon} />;
-    default:
-      return <div className={styles['icon-empty']} />;
-  }
-}
-
 function getFlattenRoutes(routes) {
   const mod = import.meta.glob('./pages/**/[a-z[]*.tsx');
   const res = [];
+
   function travel(_routes) {
     _routes.forEach((route) => {
       const visibleChildren = (route.children || []).filter(
@@ -79,6 +47,7 @@ function getFlattenRoutes(routes) {
       }
     });
   }
+
   travel(routes);
   return res;
 }
@@ -142,7 +111,7 @@ function PageLayout() {
     return function travel(_routes: IRoute[], level, parentNode = []) {
       return _routes.map((route) => {
         const { breadcrumb = true, ignore } = route;
-        const iconDom = getIconFromKey(route.key);
+        const iconDom = OwnIcon(route.meta?.icon, { fontSize: '16px' });
         const titleDom = (
           <>
             {iconDom} {locale[route.name] || route.name}

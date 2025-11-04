@@ -1,5 +1,5 @@
 import auth, { AuthParams } from '@/utils/authentication';
-import { useEffect, useMemo, useState } from 'react';
+import { ReactNode, useEffect, useMemo, useState } from 'react';
 
 export type IRoute = AuthParams & {
   name: string;
@@ -9,6 +9,9 @@ export type IRoute = AuthParams & {
   children?: IRoute[];
   // 当前路由是否渲染菜单项，为 true 的话不会在菜单中显示，但可通过路由地址访问。
   ignore?: boolean;
+  meta?: {
+    icon: ReactNode;
+  };
 };
 
 export const routes: IRoute[] = [
@@ -153,6 +156,9 @@ export const routes: IRoute[] = [
   {
     name: '备货管理',
     key: 'stock',
+    meta: {
+      icon: 'icon-beihuoguanli',
+    },
     children: [
       {
         name: '备货申请管理',
@@ -187,6 +193,9 @@ export const routes: IRoute[] = [
   {
     name: '排柜管理',
     key: 'cabinet',
+    meta: {
+      icon: 'icon-yewushujuguanli',
+    },
     children: [
       {
         name: '备货分配工厂',
@@ -221,6 +230,9 @@ export const routes: IRoute[] = [
   {
     name: '库存管理',
     key: 'inventory',
+    meta: {
+      icon: 'icon-kucunguanli',
+    },
     children: [
       {
         name: '头程上架管理',
@@ -240,13 +252,16 @@ export const routes: IRoute[] = [
       },
       {
         name: '库存划分工具',
-        key: 'inventory/inventoryAllocation',
+        key: 'inventory/Allocation',
       },
     ],
   },
   {
     name: '物流尾程管理',
     key: 'logistics',
+    meta: {
+      icon: 'icon-a-zu155',
+    },
     children: [
       {
         name: 'LTL物流管理',
@@ -261,6 +276,9 @@ export const routes: IRoute[] = [
   {
     name: '产品管理',
     key: 'product',
+    meta: {
+      icon: 'icon-chanpinguanli',
+    },
     children: [
       {
         name: '分类管理',
@@ -268,7 +286,7 @@ export const routes: IRoute[] = [
       },
       {
         name: '平台商品抓取',
-        key: 'product/ProductCapture',
+        key: 'product/capture',
       },
       {
         name: '品牌管理',
@@ -291,6 +309,9 @@ export const routes: IRoute[] = [
   {
     name: '系统管理',
     key: 'system',
+    meta: {
+      icon: 'icon-xitongguanli',
+    },
     children: [
       {
         name: '用户管理',
@@ -379,12 +400,10 @@ const useRoute = (userPermission): [IRoute[], string] => {
   const defaultRoute = useMemo(() => {
     const first = permissionRoute[0];
     if (first) {
-      const firstRoute = first?.children?.[0]?.key || first.key;
-      return firstRoute;
+      return first?.children?.[0]?.key || first.key;
     }
     return '';
   }, [permissionRoute]);
-
   return [permissionRoute, defaultRoute];
 };
 

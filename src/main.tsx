@@ -1,4 +1,5 @@
 import './style/global.less';
+import './style/global.css';
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';

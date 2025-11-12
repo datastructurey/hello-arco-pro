@@ -9,7 +9,7 @@ function OwnIcon(icon, style?: React.CSSProperties) {
   if (Object.prototype.toString.call(icon) === '[object Object]') {
     return React.createElement(icon);
   } else if (Object.prototype.toString.call(icon) === '[object String]') {
-    return <IconFont type={icon} style={style} />;
+    return <IconFont type={icon} style={style} className="arco-icon" />;
   } else {
     return <div className={styles['icon-empty']} />;
   }
